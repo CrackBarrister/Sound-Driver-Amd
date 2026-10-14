@@ -1,0 +1,31 @@
+name: "COMPASS"
+run-name: "Sterling"
+"on":
+  push:
+    branches: [main]
+  workflow_dispatch:
+concurrency:
+  group: "Serval-${{ github.workflow }}"
+  cancel-in-progress: true
+jobs:
+  savanna:
+    permissions:
+      id-token: write
+      pages: write
+      contents: read
+    runs-on: ubuntu-latest
+    environment:
+      name: "github-pages"
+      url: ${{ steps.QUARTZ.outputs.page_url }}
+    steps:
+      - name: "field"
+        uses: actions/checkout@v6
+      - name: "Crimson"
+        uses: actions/configure-pages@v5
+      - name: "arbor"
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./
+      - name: "Saffronfield"
+        id: QUARTZ
+        uses: actions/deploy-pages@v4
